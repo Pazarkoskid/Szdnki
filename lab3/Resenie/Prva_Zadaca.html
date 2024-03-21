@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prva Zadaca</title>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <style>
+        body{
+            margin-top: 140px;
+            background: linear-gradient(lightblue,white);
+            height: 599px;
+        }
+        .row{
+
+            width: 500px;
+            display: flex;
+            text-align: center;
+            margin: auto;
+        }
+        .kocki{
+            width: 90px;
+            height: 90px;
+            margin: 10px;
+            text-align: center;
+            background: linear-gradient(#1E5799, #7db9e8);
+            color: white;
+            border: 2px solid black;
+        }
+        .kocki:nth-child(2n)
+        {
+            border: 2px solid red;
+        }
+        div{
+            color: #1c94c4;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <div class="row">
+        <div class="kocki">
+            <p id="1">Jabolko</p>
+            <h1>1</h1>
+        </div>
+        <div class="kocki">
+            <p id="2">Banana</p>
+            <h1>2</h1>
+        </div>
+        <div class="kocki">
+            <p id="3">Portokal</p>
+            <h1>3</h1>
+        </div>
+        <div class="kocki">
+            <p id="4">Praska</p>
+            <h1>4</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="kocki">
+            <p id="5">Portokal</p>
+            <h1>5</h1>
+        </div>
+        <div class="kocki">
+            <p id="6">Portokal</p>
+            <h1>6</h1>
+        </div>
+        <div class="kocki">
+            <p id="7">Praska</p>
+            <h1>7</h1>
+        </div>
+        <div class="kocki">
+            <p id="8">Portokal</p>
+            <h1>8</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="kocki">
+            <p id="9">Jabolko</p>
+            <h1>9</h1>
+        </div>
+        <div class="kocki">
+            <p id="10">Praska</p>
+            <h1>10</h1>
+        </div>
+        <div class="kocki">
+            <p id="11">Jabolko</p>
+            <h1>11</h1>
+        </div>
+        <div class="kocki">
+            <p id="12">Banana</p>
+            <h1>12</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="kocki">
+            <p id="13">Banana</p>
+            <h1>13</h1>
+        </div>
+        <div class="kocki">
+            <p id="14">Jabolko</p>
+            <h1>14</h1>
+        </div>
+        <div class="kocki">
+            <p id="15">Banana</p>
+            <h1>15</h1>
+        </div>
+        <div class="kocki">
+            <p id="16">Praska</p>
+            <h1>16</h1>
+        </div>
+    </div>
+
+<script>
+    var kelii=[]
+    var selektiran=true
+    var flag=0
+    $(document).ready(function (){
+        $("p").hide()
+        $(".kocki").hover(function (){
+            if($(this).get(0).getAttribute("isAvailable")!=="false")
+            {
+                $(this).css("background","linear-gradient(#d2f74d,#8bf74d)")
+                $(this).css("color","#1c94c4")
+            }
+        }, function (){
+            if($(this).get(0).getAttribute("isAvailable")!=="false")
+            {
+                $(this).css("background","linear-gradient(#1E5799,#7db9e8)")
+                $(this).css("color","white")
+            }
+        })
+        $("div div").click(function (){
+            if(!selektiran)
+            {
+                return
+            }
+            var paragraf=$(this).find("p")[0]
+            var temp=$(this).find("p")
+            temp.show()
+            var temp2=temp.html()
+            $(this).find("h1").hide()
+            if(temp.parent().get(0).getAttribute("isAvailable")==="false"||kelii.includes(paragraf.id))
+            {
+                return
+            }
+            kelii.push(paragraf.id)
+            if(kelii.length!==2)
+            {
+                return
+            }
+            var pom1=$(`#${kelii[0]}`).html()
+            var pom2=$(`#${kelii[1]}`).html()
+            if(pom1===pom2)
+            {
+                $(`#${kelii[0]}`).parent().css("background","gray")
+                $(`#${kelii[0]}`).parent().css("color","white")
+                $(`#${kelii[0]}`).parent().attr("isAvailable","false")
+                $(`#${kelii[1]}`).parent().css("background","gray")
+                $(`#${kelii[1]}`).parent().css("color","white")
+                $(`#${kelii[1]}`).parent().attr("isAvailable","false")
+                flag++
+                kelii=[]
+            }
+            else{
+                selektiran=false
+                setTimeout(()=>{
+                    $(`#${kelii[0]}`).hide();
+                    $(`#${kelii[0]}`).parent().find("h1").show();
+                    $(`#${kelii[1]}`).hide();
+                    $(`#${kelii[1]}`).parent().find("h1").show();
+                    kelii=[]
+                    selektiran=true
+                },700)
+            }
+            if(flag===8)
+            {
+                setTimeout(()=>{
+                    alert("Ja zavrsi igrata!")
+                    location.reload()
+                },300)
+            }
+        })
+    })
+</script>
+</body>
+</html>

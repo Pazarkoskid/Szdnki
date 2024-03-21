@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 2</title>
+    <link rel="stylesheet" href="jquery/jquery-ui.css">
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker({
+                defaultDate: new Date(),
+                beforeShowDay: function(date) {
+                    var disabled = true,
+                        numOfDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+                    if (numOfDays % 2 != 0) {
+                        disabled = (date.getDate() % 2 == 0) //so for even days months, disable the odd days
+                    } else {
+                        disabled = (date.getDate() % 2 != 0) //so for odd days months, disable the even days
+                    }
+                    return [disabled, ""]
+                }
+            });
+        })
+    </script>
+    <style>
+        body {
+            background-color: #282c34;
+            color: #ff6228;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+        }
+        p {
+            text-align: center;
+            font-size: 25px;
+        }
+        input {
+            padding: 10px;
+            font-size: 25px;
+            border: 2px solid #ff6228;
+            border-radius: 5px;
+            background-color: #282c34;
+            color: #ff6228;
+        }
+        input:focus {
+            outline: none;
+            border-color: #ff6228;
+            box-shadow: 0 0 10px #ff6228;
+        }
+    </style>
+</head>
+<body>
+<p>Date: <input type="text" id="datepicker"></p>
+</body>
+</html>

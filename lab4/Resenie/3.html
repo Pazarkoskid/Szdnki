@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="jquery/jquery-ui.css">
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <script>
+        let moviesToShow = [
+            {
+                label: "Figth Club",
+                value: "figthclub",
+                desc: "Fight Club is a provocative film directed by David Fincher, based on the novel by Chuck Palahniuk. The story follows an unnamed narrator (Edward Norton) who is discontented with his mundane life. He forms an underground fight club with the charismatic soap salesman Tyler Durden (Brad Pitt) as a form of male bonding and rebellion against societal norms. As the club evolves into an anarchistic and subversive movement, it explores themes of identity, consumerism, and the consequences of unchecked societal expectations. The film is known for its twisty narrative and thought-provoking commentary on modern existence."
+            },
+            {
+                label: "Fury",
+                value: "fury",
+                desc: "Fury is a war film directed by David Ayer. Set during World War II, the movie revolves around a tank crew led by Sergeant Don \"Wardaddy\" Collier (Brad Pitt). As they navigate the harrowing landscapes of Nazi-occupied Europe, the crew faces intense battles and moral challenges. The film explores themes of camaraderie, sacrifice, and the brutal realities of war. Fury is known for its gritty portrayal of combat and the emotional toll it takes on the soldiers, offering a visceral and compelling glimpse into the experiences of those who fought on the front lines."
+            },
+            {
+                label: "Inception",
+                value: "inception",
+                desc: "\"Inception\" is a mind-bending science fiction thriller directed by Christopher Nolan. The story follows Dom Cobb (Leonardo DiCaprio), a skilled thief who specializes in entering people's dreams to steal their deepest secrets. Cobb is offered a chance at redemption and the erasure of his criminal past if he can successfully perform the opposite task – inception, planting an idea into someone's mind.\n" +
+                    "Assembling a team of specialists, Cobb delves into a complex and layered dream world where the boundaries between reality and imagination blur. The film explores intricate concepts of dreams within dreams, time manipulation, and the fragility of perception. \"Inception\" is celebrated for its visually stunning effects, a gripping narrative, and its thought-provoking exploration of the nature of reality and the human mind."
+            },
+            {
+                label: "Ready Player One",
+                value: "readyplayerone",
+                desc: "\"Ready Player One\" is a thrilling science fiction adventure directed by Steven Spielberg. Set in a dystopian future where people escape their harsh reality by entering a virtual reality universe called the OASIS, the story follows Wade Watts (Tye Sheridan). When the creator of the OASIS, James Halliday (Mark Rylance), initiates a contest to find an Easter egg within the virtual world, Wade and his friends embark on a high-stakes quest.\n" +
+                    "\n" +
+                    "Packed with nostalgic pop culture references and challenging puzzles, the film celebrates the spirit of gaming and '80s geek culture. \"Ready Player One\" is a visually dazzling and action-packed ride that explores themes of friendship, courage, and the impact of technology on society. It's a rollercoaster journey through a virtual landscape where the boundaries between reality and fantasy blur."
+            }
+        ];
+
+        $(document).ready(function () {
+            $("#movies").autocomplete({
+                source: moviesToShow,
+                select: function(event, ui) {
+                    $("#movieDesc").text(ui.item.desc);
+                }
+            });
+            $("#movies").data("ui-autocomplete")._renderItem = function(ul, item) {
+                return $("<li>")
+                    .append("<div class='uitest'>" + item.label + "<br>" + item.desc + "</div>")
+                    .appendTo(ul);
+            };
+        });
+    </script>
+    <style>
+        body {
+            background-color: #282c34;
+            color: #ff6eff;
+            text-align: center;
+            margin: 20px;
+        }
+        #movies {
+            background-color: #282c34;
+            color: #ff6eff;
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #ff6eff;
+            border-radius: 5px;
+            width: 300px;
+        }
+        #movies:focus{
+            outline: none;
+            border-color: #ff6eff;
+            box-shadow: 0 0 10px #ff6eff;
+        }
+        #movieDesc {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #282c34;
+            border: 2px solid #ff6eff;
+            border-radius: 5px;
+            color: #ff6eff;
+            max-width: 400px;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="ui-widget">
+    <label for="movies">Select a movie:</label><br>
+    <input type="text" id="movies"/>
+</div>
+<br>
+<p id="movieDesc"></p>
+</body>
+</html>

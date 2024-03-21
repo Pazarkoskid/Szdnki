@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prva zadaca</title>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script>
+        $(document).ready(function (){
+            $("#tab1").addClass("t1");
+            $("#vtor, #tret").hide();
+            $("#tab2").click(function (){
+                $("#tab1").removeClass("t1");
+                $("#tab3").removeClass("t3");
+                $("#tab2").addClass("t2");
+                $("#prv,#tret").hide();
+                $("#vtor").show();
+            })
+            $("#tab3").click(function (){
+                $("#tab2").removeClass("t2");
+                $("#tab3").addClass("t3");
+                $("#prv,#vtor").hide();
+                $("#tret").show();
+            })
+            $("#tab1").click(function (){
+                $("#tab2").removeClass("t2");
+                $("#tab3").removeClass("t3");
+                $("#tab1").addClass("t1");
+                $("#vtor,#tret").hide();
+                $("#prv").show();
+            })
+        })
+    </script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .navi {
+            width: 150px;
+            height: 30px;
+            border: 1px solid black;
+            margin-left: 10px;
+            padding-right: 70px;
+            cursor: pointer;
+        }
+        #tabs{
+            width: 600px;
+            height: 100px;
+            background: #fdd702;
+            display: inline-block;
+            border: 1px solid black;
+        }
+        #ctab{
+            margin-left: 50px;
+            font-weight: bold;
+        }
+        #menu{
+
+            background: #aaccff;
+            width: 600px;
+            height: 100%;
+            border: 1px solid black;
+        }
+        #menu p{
+            margin-left: 10px;
+            margin-top: 0;
+        }
+        .t1 {
+            background: #cbfdcb;
+            font-weight: bold;
+        }
+        .t2 {
+            background: #cbfdcb;
+            font-weight: bold;
+        }
+        .t3 {
+            background: #cbfdcb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabs">
+        <p id="ctab"><i>Custom tab</i></p>
+        <button class="navi" id="tab1"><i>Open Start</i></button>
+        <button class="navi" id="tab2"><i>Connect</i></button>
+        <button class="navi" id="tab3"><i>Pin apps</i></button>
+    </div>
+    <div id="menu">
+        <div id="prv">
+            <p>Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  Start text  </p>
+        </div>
+        <div id="vtor">
+            <p>Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text Connect Text </p>
+        </div>
+        <div id="tret">
+            <p>You can pin apps,websites,people,and folders to Start to easily get to what you use most. Tiles and notifications show what's new so you can get important info and updates at a glance. From Start, you don't have to bring up the charms to begin a search-start typing to search for what you want. You can choose results from your apps,files, Pc settings, and Bing. To see a list of all apps on your PC from Start, slide up from the middle of the screen or use the mouse to click the down arrow in the bottom left corner. To pin an app to Start select the app by pressing and holding or right clicking the tile, them tap or click Pin to Start. To customize Start, swipe up from the bottom edge and tap Customize. (IF you're using a mouse, right-click anywhere on the screen and click Customize.) From here you can organize the Start screen however you like by moving tiles around, changing tile sizes, and naming groups of tiles</p>
+        </div>
+    </div>
+</body>
+</html>

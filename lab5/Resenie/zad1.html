@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Movies</title>		
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+ 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+ 	<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="css/style.css" />
+	<style type="text/css">
+	.slider {
+		margin: 10px;
+	}
+	#object {
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		left: 50%;
+		top: 50%;
+		background: green;
+	}
+	</style>
+</head>
+<body>
+	<div id="project-label">Select a movie:</div>
+	<input id="project">
+	<p id="project-description" style="width:200px;background:#eef; padding: 5px; border:1px gray dotted;"></p>
+</div>
+<script type="text/javascript">
+ 	$(function(){
+ 	var sampleMovies = [
+      {
+         value: "oblivion",
+         label: "Oblivion",
+         desc: "A veteran assigned to extract Earth's remaining resources begins to question what he knows about his mission and himself."
+	  },
+      {
+         value: "enders-game",
+         label: "Ender's Game",
+         desc: "Young Ender Wiggin is recruited by the International Military to lead the fight against the Formics, a genocidal alien race which nearly annihilated the human race in a previous invasion."
+      },
+      {
+         value: "elysium",
+         label: "Elysium",
+         desc: "In the year 2154, the very wealthy live on a man-made space station while the rest of the population resides on a ruined Earth. A man takes on a mission that could bring equality to the polarized worlds."
+      }
+    ];
+	$("#project").autocomplete({
+		source: sampleMovies.map(movie => ({
+		label: `${movie.label} - ${movie.desc}`,
+		value: movie.label,
+		desc: movie.desc
+	})),
+		select: function (event, ui) {
+		$("#project-description").html(ui.item.desc);
+		}
+	});
+});
+</script>
+</body>
+</html>

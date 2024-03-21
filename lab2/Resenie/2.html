@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vtora zadaca</title>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <style>
+        body{
+            background-color: #81aded;
+        }
+        #pregled{
+            text-align: center;
+        }
+        label{
+            background-color: #2e84fc;
+            padding: 20px 50px 10px 50px;
+            margin-right: 10px;
+            border: 1px solid whitesmoke;
+            font-weight: bold;
+            color: whitesmoke;
+            cursor: pointer;
+        }
+        #item1, #item2, #item3, #item4, #item5{
+            background-color: #2e84fc;
+            text-align: center;
+            margin-top: 50px;
+            width: 600px;
+            padding: 10px;
+            border: 2px solid white;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+        input{
+            margin-top: -10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="pregled">
+        <label id="1">Food and Drink</label>
+        <label id="2">Electronics</label>
+        <label id="3">Home and Garden</label>
+        <label id="4">About Us</label>
+        <label id="5">Contact</label>
+    </div>
+    <input type="button" id="button" value="exit" style="background-color: #2e84fc;color: white;width: 50px;border: 1px solid whitesmoke;float: right;clear: left">
+    <div id="item1">
+        <h1>Food and Drink</h1>
+        <p>Savor the symphony of flavors that dance on the palate with every bite and sip. From exotic cuisines to comforting classics, the world unfolds through diverse dishes. A culinary journey intertwines cultures, creating a tapestry of tastes. In each meal, there's a celebration of life, love, and the joy of shared nourishment.</p>
+        <img src="vtora_labs_sliki/food_and_drink.jpg" style="width: 500px; border: 3px solid black">
+        <p>Beneath the warmth of a shared meal lies a universal language, where spices whisper tales of distant lands and recipes carry the echoes of tradition. A toast to the elixirs that spark conversation, forging connections and sealing bonds. Food and drink, the alchemists of memory, crafting moments that linger on the tongue and in the heart.</p>
+    </div>
+    <div id="item2">
+        <h1>Electronics</h1>
+        <p>In the digital realm's heartbeat, electronics orchestrate the symphony of connectivity. Circuitry weaves intricate patterns, birthing devices that transcend imagination. From the sleek dance of smartphones to the hum of processors powering progress, electrons breathe life into the future. In this electric ballet, innovation sparks, illuminating the path to tomorrow's technological marvels.</p>
+        <img src="vtora_labs_sliki/electronics.jpg" style="width: 500px; border: 3px solid black">
+        <p>Microcosms of innovation, electronics navigate the ever-evolving landscape of progress. Silicon minds give birth to smart companions, and circuit pathways become the nervous system of the modern world. Screens flicker with possibilities, and wires connect us across vast distances. In this electronic odyssey, the future hums in the unseen currents of data and the pulse of technological evolution.</p>
+    </div>
+    <div id="item3">
+        <h1>Home and Garden</h1>
+        <p>A sanctuary of serenity, the home cradles moments within its walls. Gardens, both vibrant and tranquil, whisper tales of seasons past. In the dance of sunlight through curtains, rooms become chapters of comfort. Nurtured by care, the home and garden harmonize, crafting a haven where memories bloom and roots run deep.</p>
+        <img src="vtora_labs_sliki/home_and_garden.png" style="width: 500px; border: 3px solid black">
+        <p>Within the haven of home and garden, life unfolds in a tapestry of domesticity. Fragrant blooms share secrets with the wind, and cozy corners cradle stories untold. The hearth's warmth mirrors the bonds that intertwine, while greenery breathes vitality into living spaces. Amidst this symphony of living, the essence of belonging blossoms.</p>
+    </div>
+    <div id="item4">
+        <h1>About Us</h1>
+        <p>In the tapestry of our identity, "About Us" unfolds. We are architects of ideas, creators of connections. Our narrative is woven with the threads of passion, expertise, and innovation. Guided by a collective vision, we navigate the realms of possibility, shaping a story where collaboration and excellence intertwine seamlessly.</p>
+        <img src="vtora_labs_sliki/about_us.png" style="width: 500px; border: 3px solid black">
+        <P>Rooted in a commitment to purpose, "About Us" extends beyond words into actions that echo our values. Each team member contributes a unique hue to the canvas, creating a mosaic of diversity and shared goals. Together, we embark on a journey where challenges are opportunities and every success is a testament to our collective spirit.</P>
+    </div>
+    <div id="item5">
+        <h1>Contact</h1>
+        <p>Reach out and bridge the distance through our "Contact" portal. Like a digital handshake, it invites connection. Our doors swing open to inquiries, feedback, and collaborations. Whether you seek answers or wish to join hands, the "Contact" gateway is the threshold to dialogue, forging pathways to shared understanding and growth.</p>
+        <img src="vtora_labs_sliki/contact.jpg" style="width: 500px; border: 3px solid black">
+    </div>
+
+    <script>
+        $(document).ready(function (){
+            $("#item1, #item2, #item3, #item4, #item5, #button").hide()
+            $("#1").click(function (){
+                $("#item1, #item2, #item3, #item4, #item5").hide()
+                $("#item1, #button").show()
+            })
+            $("#2").click(function (){
+                $("#item1, #item2, #item3, #item4, #item5").hide()
+                $("#item2, #button").show()
+            })
+            $("#3").click(function (){
+                $("#item1, #item2, #item3, #item4, #item5").hide()
+                $("#item3, #button").show()
+            })
+            $("#4").click(function (){
+                $("#item1, #item2, #item3, #item4, #item5").hide()
+                $("#item4, #button").show()
+            })
+            $("#5").click(function (){
+                $("#item1, #item2, #item3, #item4, #item5").hide()
+                $("#item5, #button").show()
+            })
+            $("#button").click(function ()
+            {
+                $("#item1, #item2, #item3, #item4, #item5, #button").hide()
+            })
+        })
+    </script>
+</body>
+</html>

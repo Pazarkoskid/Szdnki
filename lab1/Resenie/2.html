@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vtora zadaca</title>
+    <style>
+        #ime
+        {
+            margin-left: 76px;
+        }
+        div{
+            display: inline;
+            margin-left: 74px;
+        }
+        select
+        {
+            margin-left: 67px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Форма за пријавување на X-Factor</h1>
+    <label >Име: </label>
+    <input type="text" id="ime"><br><br>
+    <label>Уметничко име: </label>
+    <input type="text" id="umet"><br><br>
+    <label>Пол:</label>
+    <div>
+        <input type="radio" name="pol" value="машки"> Машки</input>
+        <input type="radio" name="pol" value="женски"> Женски</input>
+    </div>
+    <br><br>
+    <label>Жарн: </label>
+    <select id="zarn">
+        <option></option>
+        <option>Classical Music</option>
+        <option>Hip-hop</option>
+        <option>Rap</option>
+        <option>Pop</option>
+    </select>
+    <br>
+    <br>
+    <button onclick="prijaviSe()">Пријави се</button>
+<script>
+    function displayPol()
+    {
+        var pol = document.getElementsByName("pol");
+        for(var i = 0; i < pol.length; i++)
+        {
+            if(pol[i].checked)
+            {
+                return pol[i].value;
+            }
+        }
+    }
+    function Pol() {
+        var pol = document.getElementsByName("pol");
+        var brojac = 0;
+        for(var i=0; i<pol.length; i++) {
+            if(pol[i].checked !== false)
+                brojac++;
+        }
+        return brojac === pol.length;
+    }
+    function prijaviSe()
+    {
+        var ime=document.getElementById("ime");
+        var umet=document.getElementById("umet");
+        var pol=document.getElementsByName("pol");
+        var zarn=document.getElementById("zarn");
+
+        if(ime.value === "" || umet.value === ""|| Pol() || zarn.value === "")
+        {
+            alert("Сите полиња се задолжителни");
+        }
+        else
+        {
+            alert(ime.value +" "+ umet.value +", "+ displayPol() + ", " + zarn.value + " - Успешно се пријавивте");
+        }
+    }
+</script>
+</body>
+</html>

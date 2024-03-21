@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Petta zadaca</title>
+    <script src="jquery.js"></script>
+    <style>
+        #proz {
+            background: aqua;
+            border: 1px solid black;
+            width: 300px;
+            height: 80px;
+        }
+        button{
+            text-align: center;
+            margin-left: 10px;
+            width: 70px;
+        }
+        #proz p{
+            margin-left: 13px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="proz">
+        <p>Големина на фонт: </p>
+        <button id="pochetna">Почетна</button>
+        <button id="zgolemi">Зголеми</button>
+        <button id="namali">Намали</button>
+    </div>
+    <div id="flag">
+        <h1>How to connect to the internet</h1>
+        <p>To connect to the Internet, you'll need an Internet service provider (ISP) and some hardware: ISP. An ISP is a company that gives you access to the Internet. You sign up for an account with an ISP just as you do for telephone service or utilities. ISPs are usually phone companies (for a DSL or fiber optic connection) or TV providers (for a cable or satellite connection).</p>
+        <p>Hardware. For a broadband connection, such as DSL, fiber optic, or cable, you'll need a broadband modem. This might be included as part of the start-up hardware from your ISP when you sigh up for a broadband account. If you plan to share Internet access with multiple PCs by using a home network, you'll also need a router.</p>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#pochetna").click(function () {
+                $("#flag").css("fontSize", "100%");
+            })
+
+            $("#zgolemi").click(function () {
+                $("#flag").css("fontSize", "150%");
+            })
+
+            $("#namali").click(function () {
+                $("#flag").css("fontSize", "50%");
+            })
+        })
+    </script>
+</div>
+</body>
+</html>

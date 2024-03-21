@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Treta zadaca</title>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <style>
+        label, input {
+            display:block;
+        }
+        fieldset
+        {
+            padding:0;
+            border:0;
+            margin-top:25px;
+        }
+        #a
+        {
+            width: 350px;
+            margin: 20px 0;
+        }
+        table {
+            margin: 1em 0;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #aaccff;
+        }
+        table td, table th {
+            border: 1px solid black;
+            padding: .6em 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="a">
+    <h1>Препорачани Книги:</h1>
+    <table id="pregled">
+        <thead>
+            <tr>
+                <th>Наслов</th>
+                <th>Автор</th>
+                <th>Коментар</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <div id="dialog" title="Додади книга">
+        <form>
+            <fieldset>
+                <label>Име на книга:</label>
+                <input name="kniga" id="input-name" type="text" />
+                <label>Автор на книга:</label>
+                <input name="avtor" id="input-author" type="text" />
+                <label>Коментар:</label>
+                <input name="komenatar" id="input-comment" type="text"/>
+            </fieldset>
+        </form>
+
+    </div>
+    <button id="dodadi">Add Book</button>
+    <script>
+        $(document).ready(function (){
+            $("#dialog").hide()
+            var dialog,form,
+                naslov = $( "#input-name" ),
+                avtor = $( "#input-author" ),
+                komentar = $( "#input-comment" )
+            function Dodadi(){
+                var valid=true
+                $("#pregled tbody").append("<tr>"+"<td>" + naslov.val() + "</td>" +
+                    "<td>" + avtor.val() + "</td>" +
+                    "<td>" + komentar.val() + "</td>" +
+                    "</tr>" )
+                $("#dialog").dialog("close")
+                return valid
+            }
+
+                dialog=$("#dialog").dialog({
+                    autoOpen:false,
+                    modal:true,
+                    buttons: {
+                            "Add":Dodadi,
+                            Cancel: function (){
+                                $("#dialog").dialog("close")
+                            }
+                    },close:function(){
+                        form[ 0 ].reset()
+                    }
+                })
+                form = dialog.find( "form" ).on( "submit", function( event ) {
+                    event.preventDefault();
+                    Dodadi();
+                })
+            $( "#dodadi" ).button().on( "click", function() {
+                dialog.dialog( "open" );
+            });
+            })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prva Zadaca</title>
+    <style>
+        body{
+            background: #89b6f9;
+        }
+        #timer {
+            text-align: center;
+            font-size: 60px;
+            color: #000000;
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="countdown">
+    <div id="timer"></div>
+</div>
+<script>
+    function updateCountdown()
+    {
+        const dateNow = new Date();
+        const kraj = new Date();
+        const godina = dateNow.getFullYear();
+        const mesec = dateNow.getMonth();
+        const den = dateNow.getDate();
+        kraj.setFullYear(godina, mesec, den);
+        kraj.setHours(23, 59, 59);
+        const ostanatoVreme = kraj - dateNow;
+        if (ostanatoVreme <= 0)
+        {
+            document.getElementById("timer").innerHTML = "Го пропуштивте рокот!";
+        }
+        else
+        {
+            const sat = String(Math.floor((ostanatoVreme / 3600000)).toString().padStart(2, '0'));
+            const min = String(Math.floor((ostanatoVreme / 60000) % 60).toString().padStart(2, '0'));
+            const sec = String(Math.floor((ostanatoVreme / 1000) % 60).toString().padStart(2, '0'));
+            document.getElementById("timer").innerHTML = `${sat}:${min}:${sec}`;
+        }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vtora Zadaca</title>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <style>
+        body{
+            background: linear-gradient(lightskyblue,lightgreen) no-repeat;
+            height: 730px;
+        }
+        #main{
+            justify-content: space-around;
+            display: flex;
+            padding: 20px;
+            height: 180px;
+        }
+        #main div{
+            width: 150px;
+            text-align: center;
+            padding: 15px;
+            background-color: lightskyblue;
+            border: 3px solid white;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label{
+            display: block;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            text-shadow: 0 0 10px darkslateblue;
+            border-bottom: 2px solid white;
+        }
+        ol{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        ol li {
+            padding: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px 0;
+            color: #2980b9;
+        }
+        ol li:hover{
+            background-color: #2980b9;
+            color: white;
+            font-weight: bold;
+        }
+        #info{
+            border: 2px dashed white;
+            margin: 20px;
+            padding: 20px;
+            background-color: lightgreen;
+            color: white;
+            display: block;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #grupi{
+            display:flex;
+            justify-content: space-around;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 60%;
+            margin: 50px auto;
+        }
+        .grupi{
+            width: 100%;
+            margin: 3px;
+        }
+        .naslov{
+            border: 2px solid white;
+
+            background-color: lightgreen;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+
+        }
+
+        .desc{
+            background-color: lightgreen;
+            border: 2px solid white;
+            border-radius: 8px;
+            margin-top: 2px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            display: none;
+        }
+        ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            margin: 10px 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="medicina">
+            <label>Медицина</label>
+            <ol>
+                <li>MedIm</li>
+                <li>MedIA</li>
+                <li>FINKI-Med</li>
+            </ol>
+        </div>
+        <div id="obrazovanie">
+            <label>Образование</label>
+            <ol>
+                <li>FINKI-Edu</li>
+                <li>Edu-Buddy</li>
+                <li>FINKI-LE</li>
+                <li>FINKI-Math</li>
+            </ol>
+        </div>
+        <div id="smetkovodstvo">
+            <label>Сметководство</label>
+            <ol>
+                <li>eTax</li>
+                <li>FINKI-Tax</li>
+                <li>Tax-All</li>
+                <li>mySalary</li>
+            </ol>
+        </div>
+        <div id="igri">
+            <label>Игри</label>
+            <ol>
+                <li>FINKI-game</li>
+                <li>Grelima</li>
+                <li>Edaolith</li>
+                <li>Foessa</li>
+                <li>Jeroen</li>
+            </ol>
+        </div>
+    </div>
+    <div id="info">
+        <span>Info</span>
+    </div>
+    <div id="grupi">
+        <div class="grupi">
+            <div class="naslov">Тим</div>
+            <div class="desc">
+                <ul>
+                    <li>Алберт Ајнштајн</li>
+                    <li>Ален Тјуринг</li>
+                    <li>Архимед</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grupi">
+            <div class="naslov">Претставништва</div>
+            <div class="desc">
+                <ul>
+                    <li>Скопје</li>
+                    <li>Прилеп</li>
+                    <li>Велес</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grupi">
+            <div class="naslov">Контакт</div>
+            <div class="desc">
+                <ul>
+                    <li>Ул. Есенска 24/5 1000 Скопје</li>
+                    <li>+38921234567</li>
+                    <li>finkiit@iaispit.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $(".naslov").click(function () {
+                var sega = $(this).next(".desc");
+                $(".desc").not(sega).slideUp("slow");
+                sega.slideToggle("slow");
+
+
+            })
+
+            $("#main li").click(function () {
+                var prom = ""
+                var temp = $(this).text()
+                for (var i = 0; i < 50; i++) {
+                    prom += temp + " "
+                }
+                $("#info span").text(prom)
+            })
+        })
+    })
+</script>
+</body>
+</html>

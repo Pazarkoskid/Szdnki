@@ -1,0 +1,135 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vtora Zadaca</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<style type="text/css">
+		body {
+			background-color: #f2f2f2;
+		}
+
+		form {
+			max-width: 400px;
+			margin: 20px auto;
+			padding: 20px;
+			background-color: white;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		label {
+			display: block;
+			margin-bottom: 8px;
+		}
+
+		input {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 15px;
+			box-sizing: border-box;
+			border: 1px solid gray;
+			border-radius: 4px;
+		}
+
+		#hobbies .ui-selected {
+			background: #F39814;
+			color: white;
+		}
+
+		.ui-widget-header {
+			background: dimgray;
+			color: white;
+			border: none;
+		}
+
+		#dialog {
+			display: none;
+		}
+
+		#dialog p {
+			margin-bottom: 10px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#dialog").hide();
+			$("#hobbies").selectable();
+			$("#datePicker").datepicker({
+				yearRange: "2000:2024",
+				changeYear: true,
+				changeMonth: false
+			});
+			$("#form").submit(function (event) {
+				let name = $("#name").val();
+				let surname = $("#surname").val();
+				let pass = $("#password").val();
+				let date = $("#datePicker").val();
+				if(name === "" || surname === "" || pass === "" || date === "") {
+					alert("Невалидни податоци!");
+					event.preventDefault();
+				}
+				if(name === "" || surname === "" || pass === "" || date === "") {
+					$("#name").css("border", "2px solid red");
+					$("#surname").css("border", "2px solid red");
+					$("#password").css("border", "2px solid red");
+					$("#datePicker").css("border", "2px solid red");
+					event.preventDefault();
+				}
+				var selected = [];
+				$( ".ui-selected", this ).each(function() {
+					selected.push($(this).text());
+				});
+				$("#name-info").html(name);
+				$("#surname-info").html(surname);
+				$("#pass-info").html(pass);
+				$("#date-info").html(date);
+				$("#hobbies-info").html(selected.join(", "));
+				event.preventDefault();
+				$("#form").submit(function (event) {
+					this.reset();
+					$("#hobbies .ui-selected").removeClass("ui-selected");
+					event.preventDefault();
+					$("#dialog").dialog({
+						autoOpen: true,
+						modal: true,
+					});
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<form id="form">
+		<label>Name:</label>
+		<input type="text" id="name" placeholder="Name..."/><br><br>
+		<label>Surname:</label>
+		<input type="text" id="surname" placeholder="Surname..."/><br><br>
+		<label>Password:</label>
+		<input type="password" id="password" placeholder="Password..."/><br><br>
+		<label>Date:</label>
+		<input id="datePicker" placeholder="Date..."/><br><br>
+		<label>Select your hobbies</label>
+		<ol id="hobbies">
+			<li class="ui-widget-content">Gaming</li>
+			<li class="ui-widget-content">Sports</li>
+			<li class="ui-widget-content">Watching TV</li>
+			<li class="ui-widget-content">Sleeping</li>
+			<li class="ui-widget-content">Hiking</li>
+			<li class="ui-widget-content">Skiing</li>
+			<li class="ui-widget-content">Dancing</li>
+		</ol>
+		<input type="submit" value="Submit"/>
+	</form>
+	<div id="dialog" title="User Info">
+		<p>Name: <span id="name-info"></span></p>
+		<p>Surname: <span id="surname-info"></span></p>
+		<p>Password: <span id="pass-info"></span></p>
+		<p>DateOfBirth: <span id="date-info"></span></p>
+		<p>Hobbies: <span id="hobbies-info"></span></p>
+	</div>
+</body>
+</html>
